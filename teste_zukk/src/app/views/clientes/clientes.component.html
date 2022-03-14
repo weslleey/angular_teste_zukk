@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="principal">
+         <div class="card">
+            <div class="card-header">
+                Formulário
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Cliente</h5>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">  
+
+                    <div class="form-row">
+                        <div class="col-9 col-sm-4 col-md-4">
+                            <label for="userId">Consulta Cliente</label>
+                            <input type="text" class="form-control" id="userId" name="userId" 
+                            [(ngModel)]="user.userId" #userId placeholder="Digite o ID do cliente">
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn_pesquisar" 
+                            #btn_pesquisar (click)="searchId(f, userId, btn_excluir, btn_alterar)">
+                                Pesquisar 
+                            </button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-row" ngModelGroup="Address">
+                        <div class="col-md-3">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name"
+                                #nome="ngModel" required>
+                            <input type="hidden" class="form-control" id="id" name="id" #id [(ngModel)]="user.id" [(ngModel)]="user.id">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="phone">Telefone</label>
+                            <input type="text" class="form-control" id="phone" name="phone" 
+                            [(ngModel)]="user.phone" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="email">E-mail</label>
+                            <input type="text" class="form-control" id="email" name="email" 
+                            [(ngModel)]="user.email" email required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="zipCode">CEP</label>
+                            <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="user.zipCode"
+                                #CEP="ngModel" (blur)="queryZipCode(CEP.value, f)" required>
+                        </div>
+                        <div class="col">
+                            <label for="address">Endereço</label>
+                            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="user.address"
+                                readonly required>
+                        </div>
+                        <div class="col">
+                            <label for="district">Bairro</label>
+                            <input type="text" class="form-control" id="district" name="district"
+                                [(ngModel)]="user.district" readonly required>
+                        </div>
+                        <div class="col">
+                            <label for="city">Cidade</label>
+                            <input type="text" class="form-control" id="city" name="city" 
+                            [(ngModel)]="user.city" readonly required>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="state">Estado</label>
+                            <input type="text" class="form-control" id="state" name="state" [(ngModel)]="user.state"
+                                readonly required>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        
+                        
+                    
+                        <button class="btn btn-primary" [disabled]="!f.valid" #btn_excluir
+                        (click)="deleteRegistration(f, btn_excluir, btn_alterar)">Excluir </button>
+                    
+                        <button class="btn btn-primary" [disabled]="!f.valid" #btn_alterar
+                        (click)="changeRegistration(f, btn_excluir, btn_alterar)">Alterar</button>
+    
+                        <button class="btn btn-primary" (click)="resetForm(f)">Limpar</button>
+                    
+                        <button type="submit" class="btn btn-primary"
+                        [disabled]="!f.valid" (click)="save(f)">Cadastrar</button>
+                       
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+    
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Tabela de Clientes</h5>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Endereço</th>
+                                <th>Bairro</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let x of customer_data_obj">
+                                <td class="ID">{{x.UserId}}</td>
+                                <td>{{x.Name}}</td>
+                                <td>{{x.Address}}</td>
+                                <td>{{x.District}}</td>
+                                <td>{{x.City}}</td>
+                                <td>{{x.State}}</td>
+                                <td>{{x.Phone}}</td>
+                                <td>{{x.Email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

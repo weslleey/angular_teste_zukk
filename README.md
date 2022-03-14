@@ -57,10 +57,10 @@ Ao realizar o login (inserindo os dados: "Admin" como login e "1234" como senha)
   <img width="1145" height="612" src="https://i.imgur.com/waFyOcG.png">
 </p>
 
-1. Terá 10 minutos apra realizar as ações antes do token expirar, ai deverá fazer login novamente.
+1. Terá 10 minutos para realizar as ações antes do token expirar, ai deverá fazer login novamente.
 2. Para pesquisar o usuário deve saber o ID do cliente.
 3. Para excluir ou alterar, deve-se pesquisar o ID do cliente primeiro.
-4. Para cadastrar todos os campos deve sesr preenchidos, salvo campo de pesquisa.
+4. Para cadastrar todos os campos devem ser preenchidos, salvo campo de pesquisa.
 5. Todos os cadastros serão exibidos em uam tabela abaixo do forumlário.
 6. O botão limpar, limpa somente os campos bloqueados.
 7. Não foram realizadas validações dos campos de forma visual.

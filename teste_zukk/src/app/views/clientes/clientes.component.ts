@@ -30,13 +30,13 @@ export class ClientesComponent implements OnInit {
   constructor(private service: ConsultaCepService, private clientService: ClientesService) { }
 
   ngOnInit(): void {
-
+    /* Salva os dados do BackEnd na variável para preencher a tabela quando o documento da página carrega*/
     this.customer_data_obj =  this.getDataLocalStorage();
 
   }
 
   onSubmit(form: any) {
-    console.log(form)
+    // console.log(form)
   }
 
 
@@ -44,6 +44,7 @@ export class ClientesComponent implements OnInit {
 
     var lastIndex: any = 0;
 
+    //Verifica se há usuários cadastrados no backEnd para realizar a contagem do ID
     if (this.getDataLocalStorage() != null) {
       console.log('entrou no if')
       this.customer_data_localStorage = this.getDataLocalStorage();
@@ -51,6 +52,7 @@ export class ClientesComponent implements OnInit {
       lastIndex = this.customer_data_localStorage.slice(-1)[0].id;
     }
 
+    //Preenche a váriavel Array para poder salvar os dados no BackEnd
     this.customer_data_localStorage.push({
       "id": (lastIndex + 1),
       "Name" : form.value.Address.name,
@@ -66,6 +68,7 @@ export class ClientesComponent implements OnInit {
     // Transformar o objeto em string e salvar em localStorage
     localStorage.setItem('customer_data', JSON.stringify(this.customer_data_localStorage));
 
+    //Paga dos dados no formulário
     form.form.patchValue({
       Address: {
         id: null,
@@ -79,10 +82,12 @@ export class ClientesComponent implements OnInit {
         email: null
       }
     });
-
+    
+    /* Salva os dados do BackEnd na variável para preencher a tabela */
     this.customer_data_obj =  this.getDataLocalStorage();
   }
 
+  /* Método que realiza busca no BackEnd retornando os clintes cadastrados em um Array */
   getDataLocalStorage() {
     // Receber a string
     let customer_data_string: any = localStorage.getItem('customer_data');
@@ -92,7 +97,7 @@ export class ClientesComponent implements OnInit {
     return customer_data_obj;
   }
 
-
+ /* Método que faz a consulta do CEP na API do viacep*/
   queryZipCode(cep: any, form: any) {
 
     //Nova variável "cep" somente com dígitos.
@@ -108,7 +113,7 @@ export class ClientesComponent implements OnInit {
       if(validacep.test(cep)) {
 
         this.resetForm(form);
-
+        //Chamada do método onde é feito a consulta da API no consulta-cep.service.ts
         const retorno = this.service.consultZipCode(cep).subscribe(data => this.popularForm(data, form));
        
       } else {
@@ -149,29 +154,38 @@ export class ClientesComponent implements OnInit {
 
   }
 
-
+  /* Método para pesquisar dados de clientes no BackEnd */
   searchId(paramForm: any, userId: any, btn_excluir: any, btn_alterar: any){
-
+    /* Salva os dados do BackEnd na variável */
     var arrClients = this.getDataLocalStorage();
+    /* Pega o posição do index onde o cliente pesquisado está salvo no BackEnd */
     var pos = this.verifyIndexPosition(userId.value ,arrClients);
+    /* Chama o método searchId do clientes.service.ts com os paramentros necessários */
     this.clientService.searchId(paramForm, btn_excluir, btn_alterar, pos, arrClients);
 
   }
-
+  /* Método para excluir dados de clientes no BackEnd */
   deleteRegistration(paramForm: any, btn_excluir: any, btn_alterar: any){
-
+    /* Salva os dados do BackEnd na variável */
     var arrClients = this.getDataLocalStorage();
+    /* Pega o posição do index onde o cliente pesquisado está salvo no BackEnd */
     var pos = this.verifyIndexPosition(paramForm.value.Address.id, arrClients);
+    /* Chama o método deleteRegistration do clientes.service.ts com os paramentros necessários */
     this.clientService.deleteRegistration(paramForm, btn_excluir, btn_alterar, pos, arrClients);
 
   }
- 
+  /* Método para alterar dados de clientes no BackEnd */
   changeRegistration(paramForm: any, btn_excluir: any, btn_alterar: any){
+    /* Salva os dados do BackEnd na variável */
     var arrClients = this.getDataLocalStorage();
+    /* Pega o posição do index onde o cliente pesquisado está salvo no BackEnd */
     var pos = this.verifyIndexPosition(paramForm.value.Address.id, arrClients);
+    /* Chama o método changeRegistration do clientes.service.ts com os paramentros necessários */
     this.clientService.changeRegistration(paramForm, btn_excluir, btn_alterar, pos, arrClients);
   }
 
+  /* Método genérico para pesquisar posição dos dados de clientes no array do BackEnd 
+  Feito para diminuir as linhas de códigos repetidas*/
   verifyIndexPosition(id: any,arrClients: any){
     var pos = arrClients.map(function(e:any) { 
       return e.id; 

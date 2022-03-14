@@ -1,27 +1,68 @@
-# TesteZukk
+<h1 align="center">Teste Zukk - Cadastro de Clientes</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+>*Teste Zukk - Cadastro de Clientes é uma plicação web,
+que tem como objetivo realizar o cadastro, alteração e exclusão de clientes.<br>
+Utilizando Angular e Typescript.
 
-## Development server
+**Indice**<br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[Inicialização](#Inicialização)<br>
+[Escopo](#escopo)<br>
+[Recursos de desenvolvimento](#recursos)<br>
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+*******
+<div id='Inicialização'/>
 
-## Build
+## Start
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. *Vá até o local no seu computador onde está localizado a pasta do projeto,*
+2. *Click com o botão direito abrir com o VSCODE,
+3. *Segure as teclas Alt+J para abrir o terminal, percorra até a raiz do projeto.
+4. *Npm install para instalar a dependencias*.
+5. *ng serve para rodar como produção, após ter gerado o build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<div id='escopo'/>
 
-## Running end-to-end tests
+*******
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<div id='recursos'/>
 
-## Further help
+## Recursos de Desenvolvimento
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+*[Angular](https://angular.io/start) Angular is a development platform, built on TypeScript.<br>
+[Typescript](https://www.typescriptlang.org/) Superset do Javascript responsavél pela tipagem<br>
+[Npm](https://docs.npmjs.com/getting-started) or
+[VSCODE](https://code.visualstudio.com/)*
+
+*******
+
+## Funcionamento do login
+
+<p align="center">
+  <img width="300" height="300" src="https://i.imgur.com/Ca8x4u8.png">
+</p>
+
+Ao realizar o login (inserindo os dados: "Admin" como login e "1234" como senha) Irá acessar a tela de clientes<br>
+
+1. Irá registrar no backend o token do usuário Admin.
+2. Caso a senha ou usuário estejam incorretos exibira um alerta na tela.
+
+
+
+## Funcionamento da tela de clientes
+
+<p align="center">
+  <img width="1145" height="612" src="https://i.imgur.com/waFyOcG.png">
+</p>
+
+1. Terá 10 minutos apra realizar as ações antes do token expirar, ai deverá fazer login novamente.
+2. Para pesquisar o usuário deve saber o ID do cliente.
+3. Para excluir ou alterar, deve-se pesquisar o ID do cliente primeiro.
+4. Para cadastrar todos os campos deve sesr preenchidos, salvo campo de pesquisa.
+5. Todos os cadastros serão exibidos em uam tabela abaixo do forumlário.
+6. O botão limpar, limpa somente os campos bloqueados.
+7. Não foram realizadas validações dos campos de forma visual.
+
+

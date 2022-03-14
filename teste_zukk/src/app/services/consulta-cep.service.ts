@@ -10,9 +10,10 @@ export class ConsultaCepService {
 
   constructor(private http: HttpClient) { }
 
-  
+  /* Método ("complementar" do método criado em clientes.component.ts) 
+  que faz a consulta do CEP na API do viacep*/
   consultZipCode(zipCode: String) {
-
+    //Retorna os dados encontrados na API
     return this.http.get<any[]>(`https://viacep.com.br/ws/${zipCode}/json/`);
   }
 }

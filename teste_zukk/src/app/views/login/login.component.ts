@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  /*Método que verifica se o retorno do método de login realizado no login.service.ts é true
+  Se for true ele redireciona o usuário para a rota de clientes */
   login(){
     const isTrue = this.service.login(this.user, this.password); 
     if (isTrue) this.route.navigate(['/clientes']);

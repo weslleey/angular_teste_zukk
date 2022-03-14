@@ -8,6 +8,9 @@ import { ClientesComponent } from './views/clientes/clientes.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    HttpClientModule, BrowserAnimationsModule
+    HttpClientModule, 
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

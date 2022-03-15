@@ -172,6 +172,7 @@ export class ClientesComponent implements OnInit {
     var pos = this.verifyIndexPosition(paramForm.value.Address.id, arrClients);
     /* Chama o método deleteRegistration do clientes.service.ts com os paramentros necessários */
     this.clientService.deleteRegistration(paramForm, btn_excluir, btn_alterar, pos, arrClients);
+    this.customer_data_obj =  this.getDataLocalStorage();
 
   }
   /* Método para alterar dados de clientes no BackEnd */
@@ -182,6 +183,7 @@ export class ClientesComponent implements OnInit {
     var pos = this.verifyIndexPosition(paramForm.value.Address.id, arrClients);
     /* Chama o método changeRegistration do clientes.service.ts com os paramentros necessários */
     this.clientService.changeRegistration(paramForm, btn_excluir, btn_alterar, pos, arrClients);
+    this.customer_data_obj =  this.getDataLocalStorage();
   }
 
   /* Método genérico para pesquisar posição dos dados de clientes no array do BackEnd 
